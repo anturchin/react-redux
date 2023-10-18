@@ -1,4 +1,7 @@
 import './App.css';
+import BookList from './components/bookList/BookList';
+import BookForm from './components/bookForm/BookForm';
+import Filter from './components/filter/Filter';
 
 function App() {
 	return (
@@ -6,6 +9,15 @@ function App() {
 			<header className="app-header">
 				<h1>Book Library App</h1>
 			</header>
+			<main className="app-main">
+				<div className="app-left-column">
+					<BookForm />
+				</div>
+				<div className="app-right-column">
+					{/* <Filter /> */}
+					<BookList />
+				</div>
+			</main>
 		</div>
 	);
 }
