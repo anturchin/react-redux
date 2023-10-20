@@ -7,20 +7,20 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-function getRandombook() {
+function getRandombook(booksData) {
 	const randomIndex = Math.floor(Math.random() * booksData.length);
 	const randomBook = booksData[randomIndex];
 	return randomBook;
 }
 
 app.get('/random-book', (req, res) => {
-	res.json(getRandombook());
+	res.json(getRandombook(booksData));
 });
 
 app.get('/random-book-delayed', (req, res) => {
 	setTimeout(() => {
-		res.json(getRandombook());
-	}, 2000)
+		res.json(getRandombook(booksData));
+	}, 3000)
 });
 
 app.listen(PORT, () => {
