@@ -7,12 +7,23 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-app.get('/random-book', (req, res) => {
+function getRandombook() {
 	const randomIndex = Math.floor(Math.random() * booksData.length);
 	const randomBook = booksData[randomIndex];
-	res.json(randomBook);
+	return randomBook;
+}
+
+app.get('/random-book', (req, res) => {
+	res.json(getRandombook());
+});
+
+app.get('/random-book-delayed', (req, res) => {
+	setTimeout(() => {
+		res.json(getRandombook());
+	}, 2000)
 });
 
 app.listen(PORT, () => {
 	console.log(`server is running on port ${PORT}`);
 });
+
